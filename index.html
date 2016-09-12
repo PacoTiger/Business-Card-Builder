@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Creador de Tarjetas</title>
+  <style>
+    body {
+      font-family: Helvetica, sans-serif;
+    }
+    input {
+      height: 20px;
+      padding: 5px;
+      font-size: 16px;
+    }
+    button {
+      height: 32px;
+      font-size: 16px;
+    }
+    .colours {
+      margin: 20px 0;
+    }
+    .biz-card {
+      margin: 30px 5px;
+      height: 300px;
+      width: 500px;
+      border: 1px solid gray;
+      position: absolute;
+    }
+    .contact ul {
+      list-style: none;
+      position: absolute;
+      bottom: 5px;
+      width: 440px;
+      padding: 0 30px;
+    }
+    .contact li {
+      font-size: 14px;
+      display: inline;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      position: relative;
+    }
+    .right-align {
+      float: right;
+    }
+    .heading p {
+      text-align: center;
+    }
+    #name {
+      font-size: 34px;
+    }
+    #job-title {
+      font-size: 20px;
+    }
+    .blue {
+      background-color: #21325D;
+      color: #fff;
+    }
+    .yellow {
+      background-color: #F5FF8D;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>Creador de Business Card</h1>
+  <form>
+    <input id="a" type="text" name="name" placeholder="Nombre">
+    <input id="b"type="text" name="job-title" placeholder="Profesión">
+    <input id ="c" type="text" name="phone" placeholder="Teléfono">
+    <input id="d" type="text" name="email" placeholder="Email">
+    <button id="submit">Crear</button>
+    <div class="colours">
+      <button class="blue">Azul</button>
+      <button class="yellow">Amarillo</button>
+    </div>
+  </form>
+
+  <div class="biz-card">
+    <div class="heading">
+      <p id="name">Francisco Padilla</p>
+      <p id="job-title">Web Developer</p>
+    </div>
+    <div class="contact">
+      <ul>
+        <li id="phone">637393957</li>
+        <li id="email" class="right-align"><a href="mailto:padilla.fco@gmail.com">padilla.fco@gmail.com</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script>
+    (function() {
+      $('#submit').on('click', function(event) {
+        event.preventDefault()
+        
+        $("#name").text($("#a").val());
+        $("#job-title").text($("#b").val());
+        $("#phone").text($("#c").val());
+        $("#email").text($("#d").val());
+      });
+
+      $('button.blue').on('click', function(event) {
+        event.preventDefault()
+        $(".biz-card").toggleClass("blue").removeClass("yellow");
+      });
+
+      $('button.yellow').on('click', function(event) {
+        event.preventDefault()
+        $(".biz-card").toggleClass("yellow").removeClass("blue");
+      });
+    })()
+  </script>
+</body>
+</html>
